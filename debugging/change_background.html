@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Background Color</title>
+    <style>
+        /* Style du corps de la page */
+        body {
+            font-family: Arial, sans-serif; /* Police */
+            text-align: center; /* Centre le texte */
+            padding-top: 50px; /* Décalage du haut */
+        }
+
+        /* Style du bouton */
+        button {
+            padding: 10px 20px; /* Espace à l'intérieur du bouton */
+            font-size: 16px;    /* Taille du texte */
+            cursor: pointer;    /* Change le curseur quand on passe dessus */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Titre de la page -->
+    <h1>Click the button to change the background color</h1>
+
+    <!-- Bouton sur lequel on va cliquer -->
+    <button id="colorButton">Change Color</button>
+
+    <!-- Script JavaScript -->
+    <script>
+        // 1️⃣ On attend que tout le contenu de la page soit chargé
+        document.addEventListener("DOMContentLoaded", function() {
+
+            // 2️⃣ On récupère le bouton avec son id "colorButton"
+            const button = document.getElementById("colorButton");
+
+            // 3️⃣ On dit : quand on clique sur le bouton, exécute la fonction changeBackgroundColor
+            button.addEventListener("click", changeBackgroundColor);
+        });
+
+        // 4️⃣ Fonction qui change la couleur de fond
+        function changeBackgroundColor() {
+            // Génère un nombre aléatoire entre 0 et 16777215 (c'est toutes les couleurs possibles en hex)
+            let randomColor = Math.floor(Math.random() * 16777215);
+
+            // Convertit ce nombre en code hex et ajoute # au début pour CSS
+            randomColor = "#" + randomColor.toString(16).padStart(6, '0');
+
+            // Change la couleur de fond du body
+            document.body.style.backgroundColor = randomColor;
+        }
+    </script>
+</body>
+</html>
